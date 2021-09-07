@@ -29,7 +29,7 @@ jobs:
       # Cache
       - uses: actions/cache@v2
         with:
-	  projectPath: ${{matrix.projectPath}}
+          projectPath: ${{matrix.projectPath}}
           path: Library
           key: Library-${{ matrix.targetPlatform }}
           restore-keys: Library-
@@ -54,6 +54,6 @@ jobs:
       # Output
       - uses: actions/upload-artifact@v2
         with:
-	  projectPath: ${{matrix.projectPath}}
+          projectPath: ${{matrix.projectPath}}
           name: Build-${{ matrix.targetPlatform }}
           path: build-${{ matrix.targetPlatform }}
