@@ -29,8 +29,7 @@ jobs:
       # Cache
       - uses: actions/cache@v2
         with:
-          projectPath: ${{matrix.projectPath}}
-          path: Library
+          path: ${{ matrix.projectPath }}/Library
           key: Library-${{ matrix.targetPlatform }}
           restore-keys: Library-
 
@@ -48,12 +47,11 @@ jobs:
         env:
           UNITY_LICENSE: ${{ secrets.UNITY_LICENSE }}
         with:
-          projectPath: ${{matrix.projectPath}}
+          projectPath: ${{ matrix.projectPath }}
           targetPlatform: ${{ matrix.targetPlatform }}
 
       # Output
       - uses: actions/upload-artifact@v2
         with:
-          projectPath: ${{matrix.projectPath}}
           name: Build-${{ matrix.targetPlatform }}
           path: build-${{ matrix.targetPlatform }}
