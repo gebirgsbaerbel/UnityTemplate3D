@@ -107,7 +107,7 @@ jobs:
     if: github.event.action == 'published'
     steps:
       - name: Download ${{ matrix.targetPlatform }}
-        id: download-windows64
+        id: download-${{ matrix.targetPlatform }}
         uses: dsaltares/fetch-gh-release-asset@master
         with:
           version: "latest"
@@ -121,4 +121,4 @@ jobs:
           ITCH_GAME: plaguecity
           ITCH_USER: gebirgsbaerbel
           PACKAGE: build-${{ matrix.targetPlatform }}.zip
-          VERSION: ${{ steps.download-${{ matrix.targetPlatform }}.outputs.version }}
+          VERSION: ${{ steps.download-windows64.outputs.version }}
