@@ -91,7 +91,7 @@ jobs:
   # Deploy to itch.io
   #-----------------------------------------------------------------------------------------
   release_windows_to_itch:
-    name: Release to Itch.io
+    name: Release ${{ matrix.targetPlatform }} to itch.io
     strategy:
       matrix:
         targetPlatform:
@@ -102,7 +102,6 @@ jobs:
           #- iOS # Build an iOS player.
           #- Android # Build an Android .apk standalone app.
           - WebGL # WebGL.
-    name: Release ${{ matrix.targetPlatform }} to itch.io
     runs-on: ubuntu-latest
     needs: buildForAllSupportedPlatforms
     if: github.event.action == 'published'
