@@ -80,7 +80,7 @@ jobs:
         uses: svenstaro/upload-release-action@v2
         if: github.event.action == 'published'
         with:
-          # repo_token: ${{ secrets.GH_CREDENTIALS }}
+          repo_token: ${{ secrets.GITHUB_TOKEN }}
           asset_name: build-${{ matrix.targetPlatform }}.zip
           file: build/build-${{ matrix.targetPlatform }}.zip
           tag: ${{ github.ref }}
@@ -102,7 +102,7 @@ jobs:
         with:
           version: "latest"
           file: build-StandaloneWindows64.zip
-          # token: ${{ secrets.GH_CREDENTIALS }}"
+          token: ${{ secrets.GITHUB_TOKEN }}
       - name: deploy to itch.io (Windows 64)
         uses: josephbmanley/butler-publish-itchio-action@master
         env:
