@@ -1,6 +1,6 @@
 name: Build Project 🔨
 
-on: 
+on:
   push:
     branches: [ master ]
   pull_request:
@@ -61,7 +61,7 @@ jobs:
           UNITY_LICENSE: ${{ secrets.UNITY_LICENSE }}
         with:
           projectPath: ${{ matrix.projectPath }}
-          targetPlatform: ${{ matrix.targetPlatform }} 
+          targetPlatform: ${{ matrix.targetPlatform }}
       # Upload Build
       - name: Upload Build
         uses: actions/upload-artifact@v2
@@ -70,21 +70,21 @@ jobs:
           path: build/${{ matrix.targetPlatform }}
       # Zip
       - name: Zip build/${{ matrix.targetPlatform }}
-              uses: montudor/action-zip@v1
-              if: github.event.action == 'published'
-              with:
-                args: zip -qq -r build/build-${{ matrix.targetPlatform }}.zip build/${{ matrix.targetPlatform }}
-      # Upload build as zip file    
+        uses: montudor/action-zip@v1
+        if: github.event.action == 'published'
+        with:
+          args: zip -qq -r build/build-${{ matrix.targetPlatform }}.zip build/${{ matrix.targetPlatform }}
+      # Upload build as zip file
       - name: Upload build-${{ matrix.targetPlatform }}.zip to GitHub Release
-              uses: svenstaro/upload-release-action@v2
-              if: github.event.action == 'published'
-              with:
-                repo_token: ${{ secrets.GH_CREDENTIALS }}
-                asset_name: build-${{ matrix.targetPlatform }}.zip
-                file: build/build-${{ matrix.targetPlatform }}.zip
-                tag: ${{ github.ref }}
-                overwrite: true
-                body: ${{ github.event.release.body }}
+        uses: svenstaro/upload-release-action@v2
+        if: github.event.action == 'published'
+        with:
+          repo_token: ${{ secrets.GH_CREDENTIALS }}
+          asset_name: build-${{ matrix.targetPlatform }}.zip
+          file: build/build-${{ matrix.targetPlatform }}.zip
+          tag: ${{ github.ref }}
+          overwrite: true
+          body: ${{ github.event.release.body }}
 
 #-----------------------------------------------------------------------------------------
 # Deploy to itch.io
