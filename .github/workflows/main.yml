@@ -107,7 +107,7 @@ jobs:
     if: github.event.action == 'published'
     steps:
       - name: Download ${{ matrix.targetPlatform }}
-        id: download }}
+        id: download
         uses: dsaltares/fetch-gh-release-asset@master
         with:
           version: "latest"
