@@ -107,11 +107,11 @@ jobs:
     if: github.event.action == 'published'
     steps:
       - name: Download ${{ matrix.targetPlatform }}
-        id: download
+        id: Download
         uses: dsaltares/fetch-gh-release-asset@master
         with:
           version: "latest"
-          file: build-StandaloneWindows64.zip
+          file: build-${{ matrix.targetPlatform }}.zip
           token: ${{ secrets.GITHUB_TOKEN }}
       - name: Deploy to itch.io (${{ matrix.targetPlatform }})
         uses: josephbmanley/butler-publish-itchio-action@master
