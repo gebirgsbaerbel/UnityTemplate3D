@@ -107,7 +107,7 @@ release_windows_to_itch:
       env:
         BUTLER_CREDENTIALS: ${{ secrets.BUTLER_CREDENTIALS }}
         CHANNEL: windows
-        ITCH_GAME:
-        ITCH_USER:
+        ITCH_GAME: plaguecity
+        ITCH_USER: gebirgsbaerbel
         PACKAGE: build-StandaloneWindows64.zip
         VERSION: ${{ steps.download-windows64.outputs.version }}
