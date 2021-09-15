@@ -9,6 +9,7 @@ public class DisplayVersionNumber : MonoBehaviour
     private bool rightShift = false;
 
     public Text versionText;
+    public Text debugInfo;
 
     // Start is called before the first frame update
     void Start()
@@ -45,5 +46,6 @@ public class DisplayVersionNumber : MonoBehaviour
             leftShift = false;
             rightShift = false;
         }
+        debugInfo.text = leftShift + " " + rightShift + "\n" + versionText.gameObject.activeInHierarchy;
     }
 }
