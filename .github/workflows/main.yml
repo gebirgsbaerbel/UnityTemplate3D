@@ -63,6 +63,7 @@ jobs:
         with:
           projectPath: ${{ matrix.projectPath }}
           targetPlatform: ${{ matrix.targetPlatform }}
+          versioning: Semantic
       # Upload Build
       - name: Upload Build
         uses: actions/upload-artifact@v2
